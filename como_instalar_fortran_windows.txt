@@ -1,0 +1,88 @@
+# download git-sdk
+
+> site: https://gitforwindows.org/
+
+>> clicar em "Download Git for Windows SDK"
+
+vai abrir "https://github.com/git-for-windows/build-extra/releases/tag/git-sdk-1.0.7"
+
+>> baixar instalador em
+
+"git-sdk-installer-1.0.7-32.7z.exe"
+
+32 bits para ficar compatível com a dll da gsl que temos pré-compilada.
+
+executar o instalador (vai abrir um terminal, demora um pouco...)
+
+
+# configurar
+
+digitar:
+
+pacman -sS gfortran
+
+> vai procurar pelo gfortran:
+
+"
+mingw32/mingw-w64-i686-gcc-libgfortran 7.4.0-1 (mingw-w64-i686-toolchain) [installed]
+    GNU Compiler Collection (libgfortran) for MinGW-w64
+
+mingw64/mingw-w64-x86_64-gcc-libgfortran 8.2.1+20181214-1 (mingw-w64-x86_64-toolchain)
+    GNU Compiler Collection (libgfortran) for MinGW-w64
+
+"
+
+note entre parênteses: o nome do(s) pacote(s) onde foi encontrado o gfortran (mingw-w64-x86_64-toolchain e mingw-w64-i686-toolchain)
+
+escolher um e instalar: digitar
+
+pacman -S mingw-w64-x86_64-toolchain
+
+concordar: y (yes)/ y (yes)/ enter (default = todos os pacotes do grupo)/ y (yes)
+
+# como usar o git-sdk
+
+comandos iguais ao linux
+
+1. entrar em uma pasta:
+
+cd /c/users/fulano/desktop
+
+(começa com /c/ etc para entrar no drive C:/)
+
+2. listar arquivos na pasta
+
+ls
+
+# baixar projetos:
+
+"cd" até a pasta onde vai salvar o projeto
+
+git clone https://github.com/iurisegtovich/fortranSolution
+
+>> vai criar uma pasta chamada "fortranSolution" onde você estiver
+
+git branch -a
+
+>> lista todos os "branches" do projeto, ou seja, neste caso todods os exemplos...
+
+git checkout estima
+
+>> o programa git extrati os arquivos correspondedntes ao exemplo do branch "estima" para a pasta do projeto "fortran solution" (e guarda os exemplos abertos)
+
+
+# download e unzip gsl
+
+para rodar o estima precisa ter a biblioteca gsl
+
+>> baixar no site "http://gnuwin32.sourceforge.net/packages/gsl.htm"
+
+DOWNLOAD > BINARIRES (pré-compilado) > no formato zip
+
+extrair e copiar os arquivos "libgsl.dll" e "libgslcblas.dll" da pasta "gsl-1.8-bin\bin" do zip, para a pasta gsl do projeto.
+
+# compilando e rodando os códigos fortran
+
+make > compila todos os f90 da pasta src em um executável (main.elf)
+make run > automaticamente chama o make para compilar, e depois roda o programa no terminal
+make debug > compila e depois roda, mas roda usando o gdb > execução passo-a-passo (gnu debugger).
