@@ -69,7 +69,8 @@ build: .FORCE
 
 run: .FORCE
 	make $(mode)/bin/main.elf mode=$(mode)
-	(export PATH=$$PATH:$(libGSLDIR); echo $$PATH; $(mode)/bin/main.elf)
+	(export PATH=$$PATH:$(libGSLDIR); echo $$PATH; \
+	$(mode)/bin/main.elf)
 
 debug: .FORCE
 	make debug/bin/main.elf mode=debug
@@ -86,11 +87,13 @@ debug: .FORCE
 	# > q #(quit)                                   #
 	#                                               #
 	# > - - - - - - - - - - - - - - - - - - - - - - #
-	gdb debug/bin/main.elf
+	(export PATH=$$PATH:$(libGSLDIR); echo $$PATH; \
+	gdb debug/bin/main.elf)
 
 memcheck: .FORCE
 	make debug/bin/main.elf mode=debug
-	valgrind --gen-suppressions=yes --leak-check=full --track-origins=yes debug/bin/main.elf
+	(export PATH=$$PATH:$(libGSLDIR); echo $$PATH; \
+	valgrind --gen-suppressions=yes --leak-check=full --track-origins=yes debug/bin/main.elf)
 
 clean: .FORCE
 	rm -f $(mode)/bin/*.elf
