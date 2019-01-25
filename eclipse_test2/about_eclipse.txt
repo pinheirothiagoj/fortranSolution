@@ -1,0 +1,34 @@
+https://www.eclipse.org/downloads/
+
+
+
+https://www.eclipse.org/downloads/packages/installer
+
+
+eclipse-inst
+
+eclipse for scientific computing
+
+/home/atoms/eclipse/parallel-2018-12
+
+Tools for C, C++, Fortran, and UPC, including MPI, OpenMP, OpenACC, a parallel debugger, and remotely building, running and monitoring applications.
+
+workspace /home/atoms/eclipse-workspace
+
+Create a new Fortran project
+Create a new Fortran Eclipse project
+
+makefile project
+
+demo hello world fortran
+
+gcc fortran
+
+debug
+
+finish
+
+
+build
+
+debugs a local fortran application
